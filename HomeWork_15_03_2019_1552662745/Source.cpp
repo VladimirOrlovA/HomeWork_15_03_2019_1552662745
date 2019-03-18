@@ -18,11 +18,6 @@ struct RAM
 	int volume;
 };
 
-void enterBaseOfRAM()
-{
-
-}
-
 void print(RAM *ss, int n)
 {
 	cout << endl;
@@ -36,20 +31,6 @@ void print(RAM *ss, int n)
 	}
 	cout << endl;
 }
-
-//void printSearch(RAM *ss, int n, int found)
-//{
-//	cout << endl;
-//	for (int i = 0; i < n; i++)
-//	{
-//		cout << i + 1 << " - модуль памяти \n";
-//		cout << "Фирма - \t" << ss[i].brend << endl;
-//		cout << "Частота - \t" << ss[i].clock << endl;
-//		cout << "Объем - \t" << ss[i].volume << endl;
-//		cout << endl;
-//	}
-//	cout << endl;
-//}
 
 void searchRAMonParameter(RAM *ss, int n)
 {
@@ -149,6 +130,78 @@ void Task1()
 
 }
 
+struct Сlothes
+{
+	char color[10];
+	int size;
+	int length;
+};
+
+void print(Сlothes *ss, int n)
+{
+	cout << endl;
+	for (int i = 0; i < n; i++)
+	{
+		cout << " Экземляр одежды № " << i + 1 << endl;
+		cout << "Цвет - \t" << ss[i].color << endl;
+		cout << "Размер - \t" << ss[i].size << endl;
+		cout << "Длина - \t" << ss[i].length << endl;
+		cout << endl;
+	}
+	cout << endl;
+}
+
+void searhСlothesOnParameter(Сlothes *ss, int n)
+{
+	cout << "Поиск экземпляра одежды по параметру, от и выше \n";
+	cout << "размер -> ";
+	int psize;
+	cin >> psize;
+
+	cout << "длина -> ";
+	int plength;
+	cin >> plength;
+
+	int fpsize = 0;
+	int fplength = 0;
+
+	cout << "\n результат поиска по размеру >=" << psize;
+	cout << endl << endl;
+
+	for (int i = 0; i < n; i++)
+	{
+		if (ss[i].size >= psize)
+		{
+			cout << " Экземляр одежды № " << i + 1 << endl;
+			cout << "Цвет - \t" << ss[i].color << endl;
+			cout << "Размер - \t" << ss[i].size << " подходит!" << endl;
+			cout << "Длина - \t" << ss[i].length << endl;
+			cout << endl;
+			fpsize++;
+		}
+	}
+	if (fpsize == 0) cout << " ничего не найдено\n\n\n";
+	else cout << "найдено " << fpsize << endl << endl;
+
+	cout << "\n результат поиска по длине >=" << plength;
+	cout << endl << endl;
+
+	for (int i = 0; i < n; i++)
+	{
+		if (ss[i].length >= plength)
+		{
+			cout << " Экземляр одежды № " << i + 1 << endl;
+			cout << "Цвет - \t" << ss[i].color << endl;
+			cout << "Размер - \t" << ss[i].size << endl;
+			cout << "Длина - \t" << ss[i].length << " подходит!" << endl;
+			cout << endl;
+			fplength++;
+		}
+	}
+	if (fplength == 0) cout << " ничего не найдено\n\n\n";
+	else cout << "найдено " << fplength << endl << endl;
+}
+
 void Task2()
 {
 	/*2.	**Описать структуру Одежда (цвет, размер, длина). Создать массив экземпляров структуры Одежда и написать программу, 
@@ -162,8 +215,31 @@ void Task2()
 	cout << "\n--------------------------------------------------------------------------\n\nTask2\n\n";
 	SetConsoleTextAttribute(hConsole, 7);
 
+	int n;
+	cout << "Введите кол-во экземпляров одежды -> ";
+	cin >> n;
 
+	Сlothes *ss;
+	ss = new Сlothes[n];
 
+	for (int i = 0; i < n; i++)
+	{
+		cout << "введите параметры одежды № " << i + 1 << endl;
+
+		cout << "Цвет: ";
+		cin >> ss[i].color;
+
+		cout << "Размер: ";
+		cin >> ss[i].size;
+
+		cout << "Длина: ";
+		cin >> ss[i].length;
+
+		cout << endl;
+
+	}
+
+	searhСlothesOnParameter(ss, n);
 }
 
 
